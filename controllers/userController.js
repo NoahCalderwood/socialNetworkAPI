@@ -66,7 +66,7 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $addToSet: { friends: { friendId: req.params.friendId } } },
+                { $addToSet: { friends: req.params.friendId } },
                 { new: true }
             );
 
@@ -85,7 +85,7 @@ module.exports = {
         try {
             const user = await User.findOneAndUpdate(
                 { _id: req.params.userId },
-                { $pull: { friends: { friendId: req.params.friendId } } },
+                { $pull: { friends: req.params.friendId } },
                 { new: true }
             );
 
